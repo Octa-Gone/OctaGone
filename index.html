@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OctaGone | Future Tech News & Insights</title>
+    <meta name="description" content="OctaGone delivers state-of-the-art tech news, deep dives into artificial intelligence, quantum computing, cybersecurity, and future technology. Stay ahead of the curve.">
+    <meta name="keywords" content="tech news, artificial intelligence, quantum computing, space exploration, cybersecurity, gadgets, future tech, OctaGone">
+    <meta name="author" content="OctaGone Editorial">
+    
+    <!-- Link Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="glass-panel">
+        <div class="container header-container">
+            <!-- Brand Logo -->
+            <a href="index.html" class="logo" id="logo-brand">
+                <img src="assets/logo.jpg" alt="OctaGone Logo" class="logo-img">
+                <span class="logo-text">OctaGone</span>
+            </a>
+
+            <!-- Universal Search -->
+            <div class="search-bar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search systems, protocols, algorithms...">
+            </div>
+
+            <!-- Action Controls -->
+            <div class="nav-actions">
+                <!-- Bookmarks Drawer Toggle -->
+                <button class="icon-btn" id="bookmarks-toggle" title="View Bookmarks" aria-label="Bookmarks Drawer Toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                    </svg>
+                    <span class="badge bookmark-badge" style="display: none;">0</span>
+                </button>
+
+                <!-- Light/Dark Mode Switcher -->
+                <button class="icon-btn" id="theme-toggle" title="Toggle Light/Dark Theme" aria-label="Theme Toggler">
+                    <!-- Default Light theme icon (sun) filled in by JS -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Real-time Tech & Financial Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker-title">OCTA TICKER</div>
+        <div class="ticker" id="ticker-container">
+            <!-- Populated via JavaScript dynamically -->
+        </div>
+    </div>
+
+    <!-- Main Grid Content Container -->
+    <main class="container">
+        <!-- Category Filter Tabs -->
+        <nav class="categories-nav" id="categories-nav" aria-label="News Category Nav">
+            <!-- Categories will render dynamically -->
+        </nav>
+
+        <!-- Hero Premium Grid (Hidden during active search queries) -->
+        <section class="hero-section" id="hero-section">
+            <div id="hero-featured-col">
+                <!-- Large featured card placeholder -->
+            </div>
+            <div id="hero-side-col" class="hero-side-grid">
+                <!-- Secondary featured cards placeholder -->
+            </div>
+        </section>
+
+        <!-- Two Column Main Layout -->
+        <div class="main-layout">
+            <!-- Left Side: Articles Feed -->
+            <section class="feed-section">
+                <h2 class="news-section-title">LATEST BRIEFINGS</h2>
+                <div class="news-grid" id="news-grid">
+                    <!-- Standard article cards dynamically rendered -->
+                </div>
+            </section>
+
+            <!-- Right Side: Sidebar Widgets -->
+            <aside class="sidebar">
+                <!-- Widget 1: Hot Trending Topics -->
+                <div class="widget glass-panel octa-clip">
+                    <h3 class="widget-title">TRENDING INDEX</h3>
+                    <div class="trending-list">
+                        <div class="trending-item" onclick="openArticleReader(4)">
+                            <span class="trending-num">01</span>
+                            <div class="trending-details">
+                                <h4>Quantum Ascent: Superconducting Qubits Cross 1k Threshold</h4>
+                                <span>2.2k views • Quantum Computing</span>
+                            </div>
+                        </div>
+                        <div class="trending-item" onclick="openArticleReader(3)">
+                            <span class="trending-num">02</span>
+                            <div class="trending-details">
+                                <h4>Zero-Day Eclipse: The Silent Warfare in IoT Firmware</h4>
+                                <span>1.8k views • Cybersecurity</span>
+                            </div>
+                        </div>
+                        <div class="trending-item" onclick="openArticleReader(1)">
+                            <span class="trending-num">03</span>
+                            <div class="trending-details">
+                                <h4>The Ghost in the Machine: Deciphering Neural Reasoning</h4>
+                                <span>1.4k views • AI & Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Widget 2: Weekly Interactive Reader Poll -->
+                <div class="widget glass-panel octa-clip">
+                    <h3 class="widget-title">SURVEY LOG</h3>
+                    <div class="poll-widget">
+                        <p class="poll-question">Which technology will disrupt software engineering the most in the next 3 years?</p>
+                        <div class="poll-options" id="poll-options">
+                            <div class="poll-opt" data-val="1">
+                                <div class="poll-opt-bg"></div>
+                                <span class="poll-opt-text">Cognitive AI Codebase Generators</span>
+                                <span class="poll-opt-pct">65%</span>
+                            </div>
+                            <div class="poll-opt" data-val="2">
+                                <div class="poll-opt-bg"></div>
+                                <span class="poll-opt-text">Quantum-Safe Encryption Protocols</span>
+                                <span class="poll-opt-pct">24%</span>
+                            </div>
+                            <div class="poll-opt" data-val="3">
+                                <div class="poll-opt-bg"></div>
+                                <span class="poll-opt-text">Space-Based Distributed Edge Nodes</span>
+                                <span class="poll-opt-pct">11%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Widget 3: Newsletter Encryption -->
+                <div class="widget glass-panel newsletter-widget octa-clip">
+                    <div class="newsletter-content" id="newsletter-form-content">
+                        <h3 class="widget-title" style="border:none;">DECRYPT FEED</h3>
+                        <p>Subscribe to secure daily briefings directly from our research terminals to your inbox.</p>
+                        <div class="input-group">
+                            <input type="email" id="newsletter-email" placeholder="enter email address">
+                            <button class="btn-submit" id="newsletter-btn">Decrypt Channel</button>
+                        </div>
+                    </div>
+                    <div class="newsletter-success" id="newsletter-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="48" height="48" style="color: var(--accent-green); margin: 0 auto 12px; display: block;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <h4>Transmission Established</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 8px;">Encryption keys exchange complete. Check your inbox for activation details.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Article Reader Overlay (Modal) -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content glass-panel">
+            <!-- Close Trigger -->
+            <button class="modal-close-btn" id="modal-close" title="Close Reader" aria-label="Close Article Reader">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+
+            <!-- Scroll Progress Indicator -->
+            <div class="reading-progress-container">
+                <div class="reading-progress-bar" id="modal-reading-bar"></div>
+            </div>
+
+            <!-- Hero Modal Section -->
+            <div class="modal-hero">
+                <img id="modal-image" src="" alt="">
+                <div class="modal-hero-overlay">
+                    <span class="badge-tag" id="modal-category">Category</span>
+                    <h2 id="modal-title">Article Title</h2>
+                    <div class="meta-row">
+                        <div class="meta-item">
+                            <span class="avatar" id="modal-author-avatar"></span>
+                            <span class="author-name" id="modal-author">Author</span>
+                        </div>
+                        <div class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                            <span id="modal-date">Date</span>
+                        </div>
+                        <div class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
+                            <span id="modal-read-time">Read Time</span>
+                        </div>
+                        <div class="meta-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                            <span id="modal-views">Views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Body Modal Content -->
+            <div class="modal-body">
+                <!-- Text-to-Speech Control Console -->
+                <div class="tts-player">
+                    <div class="tts-info">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.063.922-2.063 2.063v4.875c0 1.141.922 2.062 2.063 2.062h1.932l4.5 4.5c.944.945 2.56.276 2.56-1.06V4.06ZM17.78 9.22a.75.75 0 1 0-1.06 1.06L18.44 12l-1.72 1.72a.75.75 0 0 0 1.06 1.06l1.72-1.72 1.72 1.72a.75.75 0 1 0 1.06-1.06L20.56 12l1.72-1.72a.75.75 0 0 0-1.06-1.06l-1.72 1.72-1.72-1.72Z" />
+                        </svg>
+                        <div>
+                            <div class="tts-title">VOICE SYNTHESIS</div>
+                            <div class="tts-sub">Read out loud via Neural TTS engine</div>
+                        </div>
+                    </div>
+                    <div class="tts-controls">
+                        <button class="tts-btn" id="tts-play">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            Listen Article
+                        </button>
+                        <button class="tts-btn" id="tts-stop" title="Stop Reading">
+                            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            Stop
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main article text wrapper -->
+                <div class="modal-article-text" id="modal-content-text">
+                    <!-- Content populated dynamically -->
+                </div>
+
+                <!-- Related Articles Inside Reader -->
+                <div class="modal-related">
+                    <h4 class="news-section-title">SUGGESTED INTEL</h4>
+                    <div class="modal-related-grid" id="modal-related-grid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Article Comments section -->
+                <section class="comments-section" aria-label="Article Comments Section">
+                    <h4 class="news-section-title">COMMUNICATIONS DECK</h4>
+                    <div class="comment-input-wrap">
+                        <textarea id="comment-textarea" placeholder="Type your encryption message..."></textarea>
+                        <div class="comment-input-actions">
+                            <input type="text" id="commenter-name-input" class="commenter-name" placeholder="Agent Alias">
+                            <button class="btn-submit" id="comment-submit" style="padding: 8px 16px;">Post Decrypt</button>
+                        </div>
+                    </div>
+                    <div class="comments-list" id="comments-list">
+                        <!-- Populated dynamically -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bookmarks Panel Drawer -->
+    <div class="bookmarks-panel" id="bookmarks-panel">
+        <div class="bookmarks-panel-header">
+            <h3>SAVED FREQUENCIES</h3>
+            <button class="bookmarks-panel-close" id="bookmarks-close" aria-label="Close Bookmarks Panel">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="bookmarks-list" id="bookmarks-list">
+            <!-- Bookmarks populated via JavaScript -->
+        </div>
+    </div>
+
+    <!-- Application Script Link -->
+    <script src="app.js"></script>
+</body>
+</html>
